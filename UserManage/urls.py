@@ -21,4 +21,5 @@ from users import views
 urlpatterns = [
     # path('admin/', admin.site.urls),
     path("test/", views.test),
+    path("group/list/", views.group_list),
 ]

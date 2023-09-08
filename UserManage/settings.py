@@ -74,10 +74,22 @@ WSGI_APPLICATION = 'UserManage.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
+# 数据库配置:自己的MySQL
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+    "default": {
+        "ENGINE": "django.db.backends.mysql",
+        "NAME": "django32_user_manage",
+        "USER": "root",
+        "PASSWORD": "mxw19910712@MYSQL",
+        "HOST": "txy",
+        "PORT": "3306",
     }
 }
 

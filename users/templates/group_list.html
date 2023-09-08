@@ -1,0 +1,61 @@
+{% extends "layout.html" %}
+
+{% block style %}
+    <style>
+        .btn-add {
+            background-color: #5bb95c !important;
+            border-color: #5bb95c !important;
+        }
+    </style>
+
+{% endblock %}
+
+
+
+{% block content %}
+    <div class="container">
+        <div style="margin: 20px auto 5px 0">
+            <a href="/group/add/">
+                <button type="button" class="btn btn-success btn-sm btn-add">添加组</button>
+            </a>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                组别列表
+            </div>
+            <div class="card-body">
+                <table class="table table-borderless">
+                    <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">组名</th>
+                        <th scope="col">操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for group in groups %}
+                        <tr>
+                            <th scope="row">{{ group.id }}</th>
+                            <td>{{ group.group_name }}</td>
+                            <td>
+                                <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                                    <a type="button" class="btn btn-primary btn-sm" href="/group/edit">
+                                        编辑
+                                    </a>
+                                    <a type="button" class="btn btn-danger btn-sm" href="/group/delete">
+                                        删除
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+
+{% endblock %}
