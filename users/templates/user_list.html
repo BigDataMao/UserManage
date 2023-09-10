@@ -1,0 +1,62 @@
+{% extends "layout.html" %}
+
+
+{% block content %}
+    <div class="container">
+        <div style="margin: 20px auto 5px 0">
+            <a href="/user/add/">
+                <button type="button" class="btn btn-success btn-sm">添加用户</button>
+            </a>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                用户列表
+            </div>
+            <div class="card-body">
+                <table class="table table-hover table-bordered table-sm">
+                    <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">用户名</th>
+                        <th scope="col">邮箱</th>
+                        <th scope="col">性别</th>
+                        <th scope="col">年龄</th>
+                        <th scope="col">到期时间</th>
+                        <th scope="col">组别</th>
+                        <th scope="col">账户余额</th>
+                        <th scope="col">操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for user in users %}
+                        <tr>
+                            <th scope="row">{{ user.id }}</th>
+                            <td>{{ user.username }}</td>
+                            <td>{{ user.email }}</td>
+                            <td>{{ user.get_gender_display }}</td>
+                            <td>{{ user.get_age }}</td>
+                            <td>{{ user.vip_end_time|date:"Y/m/d" }}</td>
+                            <td>{{ user.group }}</td>
+                            <td>{{ user.account }}</td>
+                            <td>
+                                <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                                    <a type="button" class="btn btn-primary btn-sm" href="/user/edit">
+                                        编辑
+                                    </a>
+                                    <a type="button" class="btn btn-danger btn-sm" href="/user/delete/{{ user.id }}">
+                                        删除
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+
+{% endblock %}

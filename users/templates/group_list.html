@@ -1,12 +1,6 @@
 {% extends "layout.html" %}
 
 {% block style %}
-    <style>
-        .btn-add {
-            background-color: #5bb95c !important;
-            border-color: #5bb95c !important;
-        }
-    </style>
 
 {% endblock %}
 
@@ -16,7 +10,7 @@
     <div class="container">
         <div style="margin: 20px auto 5px 0">
             <a href="/group/add/">
-                <button type="button" class="btn btn-success btn-sm btn-add">添加组</button>
+                <button type="button" class="btn btn-success btn-sm">添加组</button>
             </a>
         </div>
 
@@ -25,7 +19,7 @@
                 组别列表
             </div>
             <div class="card-body">
-                <table class="table table-borderless">
+                <table class="table table-hover table-bordered table-sm">
                     <thead>
                     <tr>
                         <th scope="col">ID</th>

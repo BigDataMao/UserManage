@@ -6,7 +6,22 @@
     <meta charset="UTF-8">
     <title>后台管理</title>
     <link rel="stylesheet" href="{% static 'plugins/bootstrap5/css/bootstrap.css' %}">
-
+    <style>
+        .container {
+            max-width: 960px;
+            {#未知:不设置960px会导致不同的设备边框比例不一致#}
+        }
+        .btn-add {
+            background-color: #5bb95c !important;
+            border-color: #5bb95c !important;
+        }
+        .card-body{
+            padding: 0 !important;
+        }
+        .table{
+            margin-bottom: 0 !important;
+        }
+    </style>
     {% block style %} {% endblock %}
 
 </head>
@@ -23,10 +38,10 @@
         <div class="collapse navbar-collapse" id="navbarColor03">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">权限管理</a>
+                    <a class="nav-link active" aria-current="page" href="/group/list">组别管理</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">用户管理</a>
+                    <a class="nav-link" href="/user/list">用户管理</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Link</a>

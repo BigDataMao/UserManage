@@ -22,4 +22,7 @@ urlpatterns = [
     # path('admin/', admin.site.urls),
     path("test/", views.test),
     path("group/list/", views.group_list),
+    path("user/list/", views.user_list),
+    path("user/add/", views.user_add),
+    path("user/delete/<int:user_id>/", views.user_delete),
 ]
