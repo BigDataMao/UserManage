@@ -6,19 +6,19 @@
     <meta charset="UTF-8">
     <title>后台管理</title>
     <link rel="stylesheet" href="{% static 'plugins/bootstrap5/css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static "plugins/bootstrap-datepicker-1.10.0/dist/css/bootstrap-datepicker.css" %}">
+    {% block css %} {% endblock %}
     <style>
         .container {
             max-width: 960px;
-            {#未知:不设置960px会导致不同的设备边框比例不一致#}
+        {#未知:不设置960px会导致不同的设备边框比例不一致#}
         }
-        .btn-add {
-            background-color: #5bb95c !important;
-            border-color: #5bb95c !important;
-        }
-        .card-body{
+
+        .card-body {
             padding: 0 !important;
         }
-        .table{
+
+        .table {
             margin-bottom: 0 !important;
         }
     </style>
@@ -77,6 +77,21 @@
 
 <script src="{% static 'plugins/js/jquery-3.7.1.js' %}"></script>
 <script src="{% static 'plugins/bootstrap5/js/bootstrap.bundle.js' %}"></script>
+<script src="{% static "plugins/bootstrap-datepicker-1.10.0/dist/js/bootstrap-datepicker.js" %}"></script>
+<script src="{% static "plugins/bootstrap-datepicker-1.10.0/dist/locales/bootstrap-datepicker.zh-CN.min.js" %}"></script>
+{% block js %} {% endblock %}
+<script>
+    {#时间选择插件#}
+    $(function () {
+        $("input[name='birthday'], input[name='vip_end_time']").datepicker({
+            format: 'yyyy-mm-dd',
+            startDate: '1900-01-01',
+            language: 'zh-CN',
+            autoclose: true,
+        });
+    })
+</script>
+
 
 </body>
 </html>

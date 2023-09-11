@@ -8,13 +8,13 @@
             </div>
             <div class="card-body">
                 <div class="container" style="margin: 10px">
-                    <form method="post">
+                    <form method="post" novalidate>
                         {% csrf_token %}
                         {% for item in user_form %}
                             <div class="mb-1">
                                 <lable>{{ item.label }}</lable>
                                 {{ item }}
-                                <span style="color: red;">{{ field.errors.0 }}</span>
+                                <span style="color: red;">{{ item.errors.0 }}</span>
                             </div>
                         {% endfor %}
                         {# 提交按钮 #}
