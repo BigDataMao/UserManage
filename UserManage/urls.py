@@ -15,17 +15,18 @@ Including another URLconf
 """
 from django.urls import path
 
-from users import views
+from users.views import group, user
 
 urlpatterns = [
     # path('admin/', admin.site.urls),
-    path("test/", views.test),
-    path("group/list/", views.group_list),
-    path("group/add/", views.group_add),
-    path("group/edit/<int:group_id>", views.group_edit),
-    path("group/delete/<int:group_id>/", views.group_delete),
-    path("user/list/", views.user_list),
-    path("user/add/", views.user_add),
-    path("user/edit/<int:user_id>/", views.user_edit),
-    path("user/delete/<int:user_id>/", views.user_delete),
+    # 组别管理
+    path("group/list/", group.group_list),
+    path("group/add/", group.group_add),
+    path("group/edit/<int:group_id>", group.group_edit),
+    path("group/delete/<int:group_id>/", group.group_delete),
+    # 用户管理
+    path("user/list/", user.user_list),
+    path("user/add/", user.user_add),
+    path("user/edit/<int:user_id>/", user.user_edit),
+    path("user/delete/<int:user_id>/", user.user_delete),
 ]
