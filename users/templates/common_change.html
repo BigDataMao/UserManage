@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    <div class="container">
+        <div class="card" style="margin-top: 30px">
+            <div class="card-header">
+                {{ title }}
+            </div>
+            <div class="card-body">
+                <div class="container" style="margin: 10px">
+                    <form method="post" novalidate>
+                        {% csrf_token %}
+                        {% for item in form %}
+                            <div class="mb-1">
+                                <lable>{{ item.label }}</lable>
+                                {{ item }}
+                                <span style="color: red;">{{ item.errors.0 }}</span>
+                            </div>
+                        {% endfor %}
+                        {# 提交按钮 #}
+                        <button class="btn btn-primary" type="submit">提交</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

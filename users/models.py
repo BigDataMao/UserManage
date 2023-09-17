@@ -8,6 +8,12 @@ python manage.py migrate
 """
 
 
+class Admin(models.Model):
+    """管理员类"""
+    username = models.CharField(max_length=32, verbose_name="用户名")
+    password = models.CharField(max_length=64, verbose_name="密码")
+
+
 class Group(models.Model):
     """区分各用户组的功能"""
     group_name = models.CharField(max_length=32, verbose_name="用户组名称")

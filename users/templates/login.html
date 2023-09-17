@@ -1,0 +1,75 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>用户登录</title>
+    <link rel="stylesheet" href="{% static 'plugins/bootstrap5/css/bootstrap.css' %}">
+    <style>
+        .account {
+            font-family: "霞鹜文楷等宽 Light", sans-serif;
+            background-color: lightblue;
+            width: 400px;
+            margin: 150px auto 100px;
+            padding-top: 30px;
+            padding-left: 60px;
+            padding-right: 60px;
+            border: 0 solid #ccc;
+            border-radius: 15px;
+            box-shadow: #6c757d 4px 4px 8px;
+        }
+
+        .account h2 {
+            margin-top: 5px;
+            text-align: center;
+        }
+
+        .account form button {
+            align-self: flex-end;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            {#float: right;#}
+        }
+
+
+    </style>
+</head>
+<body>
+<div class="account">
+    <h2 class="">用户登录</h2>
+    <form method="post" novalidate>
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="user_name" class="form-label">用户名</label>
+            {{ form.username }}
+            <span style="color: red">{{ form.username.errors.0 }}</span>
+        </div>
+        <div class="mb-3">
+            <label for="password" class="form-label">密码</label>
+            {{ form.password }}
+            <span style="color: red">{{ form.password.errors.0 }}</span>
+        </div>
+        <div>
+            <label for="image_code">图片验证码</label>
+            <div class="row">
+                <div class="col-7">
+                    {{ form.image_code }}
+                    <span style="color: red">{{ form.image_code.errors.0 }}</span>
+                </div>
+                <div class="col-5">
+                    <img src="/image/code/" id="image_code" alt="验证码" style="width: 100px;height: 30px">
+                </div>
+            </div>
+        </div>
+        <div>
+            <button type="submit" class="btn btn-primary" style="">
+                登录
+            </button>
+        </div>
+
+    </form>
+</div>
+
+</body>
+</html>

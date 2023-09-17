@@ -15,10 +15,22 @@ Including another URLconf
 """
 from django.urls import path
 
-from users.views import group, user
+from users.views import group, user, admin
+from users.utils import code
 
 urlpatterns = [
     # path('admin/', admin.site.urls),
+    # 登录登出
+    path("", user.user_list),
+    path("login/", admin.login),
+    path("logout/", admin.logout),
+    path("image/code/", admin.image_code),
+    # 管理员账户管理
+    path("admin/list/", admin.admin_list),
+    path("admin/add/", admin.admin_add),
+    path("admin/edit/<int:admin_id>/", admin.admin_edit),
+    path("admin/delete/<int:admin_id>/", admin.admin_delete),
+    path("admin/reset/<int:admin_id>/", admin.admin_reset),
     # 组别管理
     path("group/list/", group.group_list),
     path("group/add/", group.group_add),

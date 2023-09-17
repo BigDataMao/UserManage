@@ -1,0 +1,60 @@
+{% extends "layout.html" %}
+
+{% block style %}
+
+{% endblock %}
+
+
+
+{% block content %}
+    <div class="container">
+        <div style="margin: 20px auto 5px 0">
+            <a href="/admin/add/">
+                <button type="button" class="btn btn-success btn-sm">添加管理员</button>
+            </a>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                管理员列表
+            </div>
+            <div class="card-body">
+                <table class="table table-hover table-bordered table-sm">
+                    <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">管理员</th>
+                        <th scope="col">密码</th>
+                        <th scope="col">操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for admin in admins %}
+                        <tr>
+                            <th scope="row">{{ admin.id }}</th>
+                            <td>{{ admin.username }}</td>
+                            <td>******</td>
+                            <td>
+                                <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                                    <a type="button" class="btn btn-primary btn-sm" href="/admin/edit/{{ admin.id }}">
+                                        编辑
+                                    </a>
+                                    <a type="button" class="btn btn-secondary btn-sm" href="/admin/reset/{{ admin.id }}">
+                                        重置密码
+                                    </a>
+                                    <a type="button" class="btn btn-danger btn-sm" href="/admin/delete/{{ admin.id }}">
+                                        删除
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+
+{% endblock %}
