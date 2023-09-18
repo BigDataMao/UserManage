@@ -9,6 +9,15 @@
     <link rel="stylesheet" href="{% static "plugins/bootstrap-datepicker-1.10.0/dist/css/bootstrap-datepicker.css" %}">
     {% block css %} {% endblock %}
     <style>
+        @font-face {
+            font-family: 'CustomFont';
+            src: url('{% static "fonts/LXGWWenKaiMono-Regular.ttf" %}');
+        }
+
+        body {
+            font-family: "CustomFont", sans-serif !important;
+        }
+
         .container {
             max-width: 960px;
         {#未知:不设置960px会导致不同的设备边框比例不一致#}
