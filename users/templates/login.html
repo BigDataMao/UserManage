@@ -7,8 +7,12 @@
     <title>用户登录</title>
     <link rel="stylesheet" href="{% static 'plugins/bootstrap5/css/bootstrap.css' %}">
     <style>
+        @font-face {
+            font-family: 'CustomFont';
+            src: url('{% static "fonts/LXGWWenKaiMono-Regular.ttf" %}');
+        }
         .account {
-            font-family: "霞鹜文楷等宽 Light", sans-serif;
+            font-family: CustomFont, sans-serif;
             background-color: lightblue;
             width: 400px;
             margin: 150px auto 100px;
