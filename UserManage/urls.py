@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.urls import path
 
-from users.views import group, user, admin
+from users.views import group, user, admin, task
 from users.utils import code
 
 urlpatterns = [
@@ -41,4 +41,7 @@ urlpatterns = [
     path("user/add/", user.user_add),
     path("user/edit/<int:user_id>/", user.user_edit),
     path("user/delete/<int:user_id>/", user.user_delete),
+    # 任务管理
+    path("task/list/", task.task_list),
+    path("task/ajax/", task.task_ajax),
 ]
