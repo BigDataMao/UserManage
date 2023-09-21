@@ -7,6 +7,23 @@
 
 {% block content %}
     <div class="container">
+        <div class="card" style="margin-top: 30px">
+            <div class="card-header">
+                添加任务
+            </div>
+            <div class="card-body">
+                <label>
+                    <input id="btn-count" type="button" class="btn btn-primary" value="点击我有惊喜">
+                </label>
+                <label for="countText">
+                    <input type="text" id="countText" value="0" readonly>
+                </label>
+            </div>
+        </div>
+
+
+
+        <hr>
         <div style="margin: 20px auto 5px 0">
             <a href="/task/add/">
                 <button type="button" class="btn btn-success btn-sm">添加任务</button>
@@ -15,11 +32,11 @@
 
         <div class="card">
             <div class="card-header">
-                任务列表
+                任务列表-基于ajax的异步请求实现增删改查
             </div>
             <div class="card-body">
                 <label>
-                    <input type="button" class="btn btn-primary" value="点击我有惊喜" onclick="clickMe()">
+                    <input id="btn-count" type="button" class="btn btn-primary" value="点击我有惊喜">
                 </label>
                 <label for="countText">
                     <input type="text" id="countText" value="0" readonly>
@@ -32,9 +49,15 @@
 
 {% block js %}
     <script type="text/javascript">
+        $(function () {
+            {#网页加载完成后执行的代码#}
+            bindBtnCount();
+        });
+
         let count = 0;
-        function clickMe() {
-            $.ajax(
+        function bindBtnCount() {
+            $('#btn-count').click(function () {
+                $.ajax(
                 {
                     url: '/task/ajax/',
                     type: 'get',
@@ -48,6 +71,8 @@
                     }
                 }
             );
+            });
+
         }
     </script>
 
