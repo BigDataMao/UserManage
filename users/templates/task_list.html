@@ -22,7 +22,6 @@
         </div>
 
 
-
         <hr>
         <div style="margin: 20px auto 5px 0">
             <a href="/task/add/">
@@ -55,22 +54,23 @@
         });
 
         let count = 0;
+
         function bindBtnCount() {
             $('#btn-count').click(function () {
                 $.ajax(
-                {
-                    url: '/task/ajax/',
-                    type: 'get',
-                    data: {
-                        'a': count
-                    },
-                    success: function (data) {
-                        console.log(data);
-                        count++;
-                        $('#countText').val(count);
+                    {
+                        url: '/task/ajax/',
+                        type: 'get',
+                        data: {
+                            'a': count
+                        },
+                        success: function (data) {
+                            console.log(data);
+                            count++;
+                            $('#countText').val(count);
+                        }
                     }
-                }
-            );
+                );
             });
 
         }

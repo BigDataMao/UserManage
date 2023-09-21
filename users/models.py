@@ -43,3 +43,16 @@ class User(models.Model):
     def get_age(self):
         import datetime
         return int((datetime.datetime.now().date() - self.birthday).days / 365.25)
+
+
+class Task(models.Model):
+    """任务类"""
+    level_choices = (
+        (0, "简单"),
+        (1, "中等"),
+        (2, "困难"),
+    )
+    task_level = models.SmallIntegerField(verbose_name="任务等级", choices=level_choices)
+    task_name = models.CharField(max_length=32, verbose_name="任务名称")
+    task_content = models.TextField(verbose_name="任务内容")
+    task_manager = models.ForeignKey(to="Admin", to_field="id", verbose_name="任务负责人", on_delete=models.CASCADE)
