@@ -13,6 +13,10 @@ class Admin(models.Model):
     username = models.CharField(max_length=32, verbose_name="用户名")
     password = models.CharField(max_length=64, verbose_name="密码")
 
+    # 定义返回值
+    def __str__(self):
+        return self.username
+
 
 class Group(models.Model):
     """区分各用户组的功能"""
@@ -53,6 +57,7 @@ class Task(models.Model):
         (2, "困难"),
     )
     task_level = models.SmallIntegerField(verbose_name="任务等级", choices=level_choices)
+    task_manager = models.ForeignKey(to="Admin", to_field="id", verbose_name="任务负责人", on_delete=models.CASCADE)
     task_name = models.CharField(max_length=32, verbose_name="任务名称")
     task_content = models.TextField(verbose_name="任务内容")
-    task_manager = models.ForeignKey(to="Admin", to_field="id", verbose_name="任务负责人", on_delete=models.CASCADE)
+

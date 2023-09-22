@@ -44,4 +44,5 @@ urlpatterns = [
     # 任务管理
     path("task/list/", task.task_list),
     path("task/ajax/", task.task_ajax),
+    path("task/submit/", task.task_submit),
 ]
