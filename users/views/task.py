@@ -36,3 +36,15 @@ def task_submit(request):
     if task_form.is_valid():
         task_form.save()
         return HttpResponse("ok")
+
+
+@csrf_exempt
+def task_delete(request):
+    task_id = request.POST.get("task_id")
+    print(task_id, type(task_id))
+    try:
+        task = models.Task.objects.get(id=task_id)
+        task.delete()
+        return HttpResponse("ok")
+    except:
+        return HttpResponse("删除失败")

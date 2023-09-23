@@ -57,10 +57,10 @@
                             <td>{{ task.task_content }}</td>
                             <td>
                                 <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                                    <a type="button" class="btn btn-primary btn-sm" href="#">
+                                    <a type="button" class="btn btn-primary btn-sm" id="btn-edit-{{ task.id }}">
                                         编辑
                                     </a>
-                                    <a type="button" class="btn btn-danger btn-sm" href="#">
+                                    <a type="button" class="btn btn-danger btn-sm btn-delete" id="btn-delete-{{ task.id }}">
                                         删除
                                     </a>
                                 </div>
@@ -98,6 +98,7 @@
             {#网页加载完成后执行的代码#}
             bindBtnCount();
             bindBtnSubmit();
+            bindBtnDelete();
         });
 
         let count = 0;
@@ -134,6 +135,27 @@
                             alert("添加成功");
                             // 刷新页面
                             window.location.reload();
+                        }
+                    }
+                );
+            });
+        }
+
+        function bindBtnDelete() {
+            $('.btn-delete').click(function () {
+                let that = $(this);  // 保存$(this)的引用
+                $.ajax(
+                    {
+                        url: '/task/delete/',
+                        type: 'post',
+                        data: {
+                            'task_id': that.attr('id').split('-')[2]
+                        },
+                        success: function (data) {
+                            // 删除该行
+                            that.parent().parent().parent().remove();
+                            // 无需刷新页面
+                            {#window.location.reload();#}
                         }
                     }
                 );
